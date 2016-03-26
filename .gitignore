@@ -1,3 +1,5 @@
+/derby.log
+/database
 node_modules
 bower_components
 .tmp
