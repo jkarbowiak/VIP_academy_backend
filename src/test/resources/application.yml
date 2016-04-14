@@ -1,0 +1,11 @@
+flyway.enabled: false
+
+spring:
+  jpa:
+    hibernate.ddl-auto: create
+
+  datasource:
+    url: jdbc:hsqldb:mem:test
+
+
+

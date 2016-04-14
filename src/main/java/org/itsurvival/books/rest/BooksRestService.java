@@ -1,11 +1,10 @@
 package org.itsurvival.books.rest;
 
 import org.itsurvival.books.to.BookTo;
-import org.itsurvival.books.to.Genre;
+import org.itsurvival.books.common.Genre;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.time.Year;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CopyOnWriteArrayList;

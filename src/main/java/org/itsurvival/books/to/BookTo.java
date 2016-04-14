@@ -1,5 +1,7 @@
 package org.itsurvival.books.to;
 
+import org.itsurvival.books.common.Genre;
+
 public class BookTo {
 
     private Long id;

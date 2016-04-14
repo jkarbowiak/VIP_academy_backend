@@ -39,11 +39,24 @@
             <version>10.12.1.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>4.0</version>
+        </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>2.3.2</version>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 	
 	<build>
@@ -52,8 +65,19 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>4.0</version>
+                <configuration>
+                    <user>test</user>
+                    <password>test</password>
+                    <url>jdbc:derby:directory:../database</url>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
-	
+
+
 
 </project>

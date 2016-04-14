@@ -1,0 +1,11 @@
+server:
+  port: 8888
+
+spring:
+  jpa:
+    show-sql: true
+    properties.hibernate.format_sql: true
+    hibernate.ddl-auto: validate
+
+  datasource:
+    url: jdbc:derby:directory:database;create=true;user=test;password=test
