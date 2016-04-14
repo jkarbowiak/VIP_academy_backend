@@ -5,7 +5,7 @@ import org.itsurvival.books.common.Genre;
 public class BookTo {
 
     private Long id;
-    private int version;
+    private long version;
     private Genre genre;
     private int year;
     private String title;
@@ -19,11 +19,11 @@ public class BookTo {
         this.id = id;
     }
 
-    public int getVersion() {
+    public long getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(long version) {
         this.version = version;
     }
 
@@ -79,7 +79,7 @@ public class BookTo {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + version;
+        result = 31 * result + (int) (version ^ (version >>> 32));
         result = 31 * result + (genre != null ? genre.hashCode() : 0);
         result = 31 * result + year;
         result = 31 * result + (title != null ? title.hashCode() : 0);
