@@ -29,6 +29,7 @@ public class BookMapper extends AbstractMapper<Book, BookTo> {
             book.setAuthor(source.getAuthors().stream().map(author -> author.getPersonalData().getLastName()).collect(Collectors.joining(", ")));
             book.setGenre(source.getGenre());
             book.setVersion(source.getVersion());
+            book.setYear(source.getYear());
         }
         return book;
     }
@@ -44,6 +45,7 @@ public class BookMapper extends AbstractMapper<Book, BookTo> {
             if (StringUtils.hasText(author)) {
                 book.addAuthor(authorRepository.findByLastName(author));
             }
+            book.setYear(target.getYear());
         }
         return book;
     }

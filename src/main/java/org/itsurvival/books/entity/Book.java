@@ -36,6 +36,9 @@ public class Book implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private Genre genre;
+
+    @Column(name = "book_year")
+    private int year;
     
     @Version
     private long version;
@@ -102,5 +105,13 @@ public class Book implements Serializable {
 
     public void setGenre(Genre genre) {
         this.genre = genre;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }
