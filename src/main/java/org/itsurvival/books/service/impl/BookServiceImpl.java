@@ -1,6 +1,7 @@
 package org.itsurvival.books.service.impl;
 
 import com.google.common.collect.Lists;
+import org.itsurvival.books.common.BookSearchCriteria;
 import org.itsurvival.books.entity.Book;
 import org.itsurvival.books.mapper.BookMapper;
 import org.itsurvival.books.repository.BookRepository;
@@ -27,8 +28,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookTo> findBooks() {
-        Iterable<Book> books = bookRepository.findAll();
+    public List<BookTo> findBooks(BookSearchCriteria bookSearchCriteria) {
+        Iterable<Book> books = bookRepository.findBooks(bookSearchCriteria);
         return bookMapper.mapSourceCollection(Lists.newArrayList(books));
     }
 

@@ -1,5 +1,6 @@
 package org.itsurvival.books.rest;
 
+import org.itsurvival.books.common.BookSearchCriteria;
 import org.itsurvival.books.service.BookService;
 import org.itsurvival.books.to.BookTo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class BooksRestService {
     }
 
     @RequestMapping(path = "/books", method = RequestMethod.GET)
-    public List<BookTo> findBooks() {
-        return bookService.findBooks();
+    public List<BookTo> findBooks(BookSearchCriteria bookSearchCriteria) {
+        return bookService.findBooks(bookSearchCriteria);
     }
 
     @RequestMapping(path = "/book", method = RequestMethod.POST)
