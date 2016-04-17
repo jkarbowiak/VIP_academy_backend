@@ -6,6 +6,8 @@ import java.io.Serializable;
 @Entity
 public class Author implements Serializable {
 
+    public static final String PERSONAL_DATA_PROPERTY = "personalData";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;

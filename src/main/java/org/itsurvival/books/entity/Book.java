@@ -12,6 +12,8 @@ public class Book implements Serializable {
 
     public static final String TITLE_PROPERTY = "title";
 
+    public static final String AUTHORS = "authors";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

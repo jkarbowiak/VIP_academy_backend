@@ -7,6 +7,8 @@ import java.util.Date;
 @Embeddable
 public class PersonalData {
 
+    public static final String LAST_NAME_PARAMETER = "lastName";
+
     private String firstName;
 
     private String lastName;
