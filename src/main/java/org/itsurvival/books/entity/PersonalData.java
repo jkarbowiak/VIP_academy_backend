@@ -18,6 +18,7 @@ public class PersonalData {
 
     // for hibernate
     protected PersonalData() {
+
     }
     
     public PersonalData(String firstName, String lastName, Date birthDate) {
