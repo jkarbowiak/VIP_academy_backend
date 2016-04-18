@@ -56,7 +56,7 @@ public class BookServiceImpl implements BookService {
 
     private BookTo saveBook(BookTo bookTo) {
         Book book = bookMapper.convertToEntity(bookTo);
-        Book savedBook = bookRepository.save(book);
+        Book savedBook = bookRepository.saveAndFlush(book);
         return bookMapper.convertToTransportObject(savedBook);
     }
 }

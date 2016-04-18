@@ -1,8 +1,8 @@
 package org.itsurvival.books.repository;
 
 import org.itsurvival.books.entity.Book;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookRepository extends CrudRepository<Book, Long>, BookSearchRepository {
+public interface BookRepository extends JpaRepository<Book, Long>, BookSearchRepository {
 
 }
