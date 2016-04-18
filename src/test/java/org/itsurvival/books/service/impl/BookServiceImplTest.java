@@ -113,9 +113,31 @@ public class BookServiceImplTest extends AbstractDatabaseTest {
         assertThat(addedBook.getYear()).isEqualTo(year);
     }
 
+    @Test
+    public void shouldDeleteBook() {
+        // given
+        long id = 1L;
+
+        List<BookTo> booksBeforeDelete = bookService.findBooks(new BookSearchCriteria());
+        assertThat(extractIds(booksBeforeDelete).contains(id)).isTrue();
+
+        // when
+        boolean deleted = bookService.deleteBook(id);
+
+        // then
+        assertThat(deleted).isTrue();
+
+        List<BookTo> books = bookService.findBooks(new BookSearchCriteria());
+        assertThat(extractIds(books).contains(id)).isFalse();
+    }
+
     private void checkBookIds(List<BookTo> books, Set<Long> expectedIds) {
-        Set<Long> ids = books.stream().map(BookTo::getId).collect(Collectors.toSet());
+        Set<Long> ids = extractIds(books);
         assertThat(books.size()).isEqualTo(expectedIds.size());
         assertThat(ids).isEqualTo(expectedIds);
+    }
+
+    private Set<Long> extractIds(List<BookTo> books) {
+        return books.stream().map(BookTo::getId).collect(Collectors.toSet());
     }
 }
