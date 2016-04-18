@@ -29,8 +29,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookTo> findBooks(BookSearchCriteria bookSearchCriteria) {
-        Iterable<Book> books = bookRepository.findBooks(bookSearchCriteria);
-        return bookMapper.mapSourceCollection(Lists.newArrayList(books));
+        List<Book> books = bookRepository.findBooks(bookSearchCriteria);
+        return bookMapper.mapSourceCollection(books);
     }
 
     @Override
@@ -44,7 +44,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public boolean deleteBook(Long id) {
+    public BookTo readBook(long id) {
+        Book book = bookRepository.findOne(id);
+        return bookMapper.convertToTransportObject(book);
+    }
+
+    @Override
+    public boolean deleteBook(long id) {
         boolean deleted = false;
         Book book = bookRepository.findOne(id);
         if (book != null) {

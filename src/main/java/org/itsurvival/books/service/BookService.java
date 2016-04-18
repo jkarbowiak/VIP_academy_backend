@@ -13,6 +13,8 @@ public interface BookService {
 
     BookTo updateBook(BookTo book);
 
-    boolean deleteBook(Long id);
+    BookTo readBook(long id);
+
+    boolean deleteBook(long id);
     
 }
