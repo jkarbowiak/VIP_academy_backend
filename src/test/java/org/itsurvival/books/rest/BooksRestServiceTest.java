@@ -5,6 +5,7 @@ import org.itsurvival.books.common.Genre;
 import org.itsurvival.books.service.BookService;
 import org.itsurvival.books.to.BookTo;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -87,25 +88,9 @@ public class BooksRestServiceTest {
     }
 
     @Test
+    @Ignore("not implemented")
     public void shouldReturnBooksWhenFound() throws Exception {
-        // given
-        when(bookService.findBooks(any(BookSearchCriteria.class))).thenReturn(Arrays.asList(createBook(10L), createBook(20L)));
-        // when
-        mockMvc.perform(get("/services/books"))
-                // then
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id", is(10)))
-                .andExpect(jsonPath("$[0].title", is("Test title")))
-                .andExpect(jsonPath("$[0].author", is("Test author")))
-                .andExpect(jsonPath("$[0].genre", is("CRIME")))
-                .andExpect(jsonPath("$[0].year", is(1998)))
-                .andExpect(jsonPath("$[0].version", is(2)))
-                .andExpect(jsonPath("$[1].id", is(20)));
-
-        verify(bookService).findBooks(bookSearchCriteriaCaptor.capture());
-        BookSearchCriteria bookSearchCriteria = bookSearchCriteriaCaptor.getValue();
-        assertThat(bookSearchCriteria.getTitle()).isNull();
-        assertThat(bookSearchCriteria.getAuthor()).isNull();
+        // TODO
     }
 
     @Test
@@ -134,43 +119,15 @@ public class BooksRestServiceTest {
     }
 
     @Test
+    @Ignore("not implemented")
     public void shouldUpdateExistingBook() throws Exception {
-
-        // given
-        byte[] content = readFileToBytes("classpath:org/itsurvival/books/rest/existingBook.json");
-
-        when(bookService.updateBook(any(BookTo.class))).thenAnswer(args -> args.getArguments()[0]);
-
-        // when
-        mockMvc.perform(put("/services/book").content(content).contentType(MediaType.APPLICATION_JSON))
-                // then
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.title", is("Test title")));
-
-        verify(bookService).updateBook(bookCaptor.capture());
-        BookTo book = bookCaptor.getValue();
-        assertThat(book.getTitle()).isEqualTo("Test title");
-        assertThat(book.getAuthor()).isEqualTo("Test author");
-        assertThat(book.getYear()).isEqualTo(2008);
-        assertThat(book.getGenre()).isEqualTo(Genre.IT);
-        assertThat(book.getVersion()).isEqualTo(2L);
-        assertThat(book.getId()).isEqualTo(20931L);
+        // TODO
     }
 
     @Test
+    @Ignore("not implemented")
     public void shouldDeleteBook() throws Exception {
-        // given
-        long bookId = 1L;
-        boolean deleteResult = true;
-        when(bookService.deleteBook(1L)).thenReturn(deleteResult);
-
-        // when
-        mockMvc.perform(delete("/services/book/1"))
-                // then
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is(deleteResult)));
-
-        verify(bookService).deleteBook(bookId);
+        // TODO
     }
 
     private BookTo createBook(Long id) {
