@@ -1,7 +1,6 @@
 package org.itsurvival.books.service.impl;
 
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.itsurvival.books.common.BookSearchCriteria;
 import org.itsurvival.books.entity.Book;
 import org.itsurvival.books.mapper.BookMapperS;
@@ -10,11 +9,9 @@ import org.itsurvival.books.service.BookService;
 import org.itsurvival.books.to.BookTo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Lists;
+import java.util.List;
 
-@Transactional
 @Service
 public class BookServiceImpl implements BookService {
 
