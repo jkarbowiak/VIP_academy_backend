@@ -1,10 +1,7 @@
 package org.itsurvival.books.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import java.util.Date;
 
-@Embeddable
 public class PersonalData {
 
     public static final String LAST_NAME_PARAMETER = "lastName";
@@ -13,7 +10,6 @@ public class PersonalData {
 
     private String lastName;
 
-    @Column(columnDefinition="DATE", nullable = false)
     private Date birthDate;
 
     // for hibernate

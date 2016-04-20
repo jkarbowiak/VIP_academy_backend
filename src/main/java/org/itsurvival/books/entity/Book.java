@@ -4,58 +4,28 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Version;
-
 import org.itsurvival.books.common.Genre;
 
-@Entity
 public class Book implements Serializable {
 
   public static final String TITLE_PROPERTY = "title";
 
   public static final String AUTHORS = "authors";
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-  @Column(nullable = false, length = 50)
   private String title;
 
-  @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(name = "BOOK_AUTHOR", joinColumns = {
-  @JoinColumn(name = "BOOK_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
-  @JoinColumn(name = "AUTHOR_ID", nullable = false, updatable = false) })
   private Set<Author> authors = new HashSet<>();
 
-  @OneToOne(cascade = CascadeType.ALL, mappedBy = "book")
   private BookReview bookReview;
 
-  @ManyToOne
-  @JoinColumn(name = "LIBRARY_ID", nullable = true)
   private Library library;
 
-  @Enumerated(EnumType.STRING)
   private Genre genre;
 
-  @Column(name = "book_year")
   private int year;
 
-  @Version
   private long version;
 
   // for hibernate
