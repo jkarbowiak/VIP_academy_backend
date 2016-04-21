@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-            <version>4.0</version>
+            <version>3.2.1</version>
         </dependency>
 
         <dependency>
@@ -96,7 +96,7 @@
             <plugin>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-maven-plugin</artifactId>
-                <version>4.0</version>
+                <version>3.2.1</version>
                 <configuration>
                     <user>test</user>
                     <password>test</password>
