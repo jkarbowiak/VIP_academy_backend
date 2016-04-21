@@ -50,6 +50,10 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+<<<<<<< Updated upstream
+=======
+            <version>3.2.1</version>
+>>>>>>> Stashed changes
         </dependency>
 
         <dependency>
@@ -97,8 +101,8 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>3.2.1</version>
                 <configuration>
-                    <user>test</user>
-                    <password>test</password>
+                    <user>test1</user>
+                    <password>test1</password>
                     <url>jdbc:derby:directory:../database</url>
                 </configuration>
             </plugin>
