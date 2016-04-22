@@ -21,22 +21,22 @@ public class BookServiceImpl implements BookService {
 
   private final BookRepository bookRepository;
 
-  @Autowired
   private BookMapperS bookMapperS;
 
   private BookMapper bookMapper;
 
   @Autowired
-  public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper) {
+  public BookServiceImpl(BookRepository bookRepository, BookMapper bookMapper, BookMapperS bookMapperS) {
     this.bookRepository = bookRepository;
     this.bookMapper = bookMapper;
+    this.bookMapperS = bookMapperS;
   }
 
   @Override
   public List<BookTo> findBooks(BookSearchCriteria bookSearchCriteria) {
 
     List<Book> books = this.bookRepository.findBooks(bookSearchCriteria);
-    return this.bookMapper.mapSourceCollection(Lists.newArrayList(books));
+    return this.bookMapperS.booksToBookTos(Lists.newArrayList(books));
   }
 
   @Override
@@ -49,7 +49,7 @@ public class BookServiceImpl implements BookService {
   public BookTo readBook(long id) {
 
     Book book = this.bookRepository.findOne(id);
-    return this.bookMapper.convertToTransportObject(book);
+    return this.bookMapperS.bookToBookTo(book);
   }
 
   @Override
@@ -72,9 +72,9 @@ public class BookServiceImpl implements BookService {
 
   private BookTo saveBook(BookTo bookTo) {
 
-    Book book = this.bookMapper.convertToEntity(bookTo);
+    Book book = this.bookMapperS.bookToToBook(bookTo);
     Book savedBook = this.bookRepository.saveAndFlush(book);
-    return this.bookMapper.convertToTransportObject(savedBook);
+    return this.bookMapperS.bookToBookTo(savedBook);
   }
 
 }
