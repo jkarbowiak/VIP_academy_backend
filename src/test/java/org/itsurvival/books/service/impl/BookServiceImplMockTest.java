@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.itsurvival.books.common.BookSearchCriteria;
 import org.itsurvival.books.entity.Book;
-import org.itsurvival.books.mapper.BookMapper;
+import org.itsurvival.books.mapper.BookMapperS;
 import org.itsurvival.books.repository.BookRepository;
 import org.itsurvival.books.to.BookTo;
 import org.junit.Before;
@@ -25,7 +25,7 @@ public class BookServiceImplMockTest {
   private BookServiceImpl bookService;
 
   @Mock
-  private BookMapper bookMapper;
+  private BookMapperS bookMapper;
 
   @Mock
   private BookRepository bookRepository;
@@ -46,7 +46,7 @@ public class BookServiceImplMockTest {
     when(this.bookRepository.findBooks(bookSearchCriteria)).thenReturn(books);
 
     List<BookTo> bookTos = Lists.newArrayList(new BookTo(), new BookTo());
-    when(this.bookMapper.mapSourceCollection(books)).thenReturn(bookTos);
+    when(this.bookMapper.booksToBookTos(books)).thenReturn(bookTos);
 
     // when
     List<BookTo> results = this.bookService.findBooks(bookSearchCriteria);
@@ -54,6 +54,6 @@ public class BookServiceImplMockTest {
     // then
     assertThat(results).isSameAs(bookTos);
     verify(this.bookRepository).findBooks(bookSearchCriteria);
-    verify(this.bookMapper).mapSourceCollection(books);
+    verify(this.bookMapper).booksToBookTos(books);
   }
 }

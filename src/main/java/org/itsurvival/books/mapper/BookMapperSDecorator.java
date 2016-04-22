@@ -1,5 +1,6 @@
 package org.itsurvival.books.mapper;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.itsurvival.books.entity.Book;
@@ -38,5 +39,11 @@ public abstract class BookMapperSDecorator implements BookMapperS {
       book.addAuthor(this.authorRepository.findByLastName(author));
     }
     return book;
+  }
+
+  @Override
+  public List<BookTo> booksToBookTos(List<Book> books) {
+
+    return books.stream().map(this::bookToBookTo).collect(Collectors.toList());
   }
 }
